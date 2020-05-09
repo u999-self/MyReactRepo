@@ -4,6 +4,7 @@ import './App.css'
 import { Route } from 'react-router-dom'
 import Bookshelf from './Bookshelf'
 import * as BooksAPI from './BooksAPI'
+import { Link } from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
@@ -23,8 +24,8 @@ class BooksApp extends React.Component {
     });
   };
   
-  update_shelf=(book,shelf)=>{console.log(book,shelf);
-    BooksAPI.update(book,shelf).then(()=>
+  update_shelf=(book,shelf)=>{console.log(book.book,shelf);
+    BooksAPI.update(book.book,shelf).then(()=>
       BooksAPI.getAll().then(books => {
         this.setState({ books: books });
         console.log(books)
